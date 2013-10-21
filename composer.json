@@ -2,6 +2,7 @@
     "name": "enlitepro/enlite-slow-log",
     "description": "Log slow pages in Zend Framework 2",
     "minimum-stability": "stable",
+    "license": "MIT",
     "authors": [
         {
             "name": "Evgeny Shpilevsky",

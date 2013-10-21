@@ -2,9 +2,10 @@
 
 return array(
     'EnliteSlowLog' => array(
-        // accept monolog logger
+        // service manager alias
+        // accept zend logger and psr-3 logger like monolog
         'logger' => 'EnliteMonologService',
         // in milliseconds
-        'threshold' => 0
+        'threshold' => 1000
     )
 );
