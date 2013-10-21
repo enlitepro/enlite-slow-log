@@ -5,10 +5,11 @@
 
 namespace EnliteSlowLog;
 
+use Psr\Log\LoggerInterface as PSR3LoggerInterface;
 use Zend\EventManager\EventInterface;
 use Zend\Http\PhpEnvironment\Request;
 use Zend\Log\Logger;
-use Zend\Log\LoggerInterface;
+use Zend\Log\LoggerInterface as ZendLoggerInterface;
 use Zend\ModuleManager\Feature\BootstrapListenerInterface;
 use Zend\Mvc\MvcEvent;
 
@@ -52,7 +53,7 @@ class Module implements BootstrapListenerInterface
             $threshold = $config['EnliteSlowLog']['threshold'];
         }
 
-        $elapse = microtime(true) - $this->start;
+        $elapse = (microtime(true) - $this->start) * 1000;
 
         if ($elapse > $threshold) {
             $request = $serviceManager->get('request');
@@ -68,10 +69,10 @@ class Module implements BootstrapListenerInterface
                 $elapse
             );
 
-            if ($logger instanceof LoggerInterface) {
+            if ($logger instanceof ZendLoggerInterface) {
                 $logger->warn($message);
             } else {
-                if (class_exists('Psr\Log\LoggerInterface') && $logger instanceof \Psr\Log\LoggerInterface) {
+                if ($logger instanceof PSR3LoggerInterface) {
                     $logger->warning($message);
                 } else {
                     throw new \RuntimeException("Cannot log slow pages, unknown type of logger");

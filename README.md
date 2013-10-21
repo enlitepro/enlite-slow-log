@@ -1,7 +1,7 @@
 Enlite slow log
 ===============
 
-Log slow pages in Zend Framework
+Log slow pages in Zend Framework 2
 
 INSTALL
 =======

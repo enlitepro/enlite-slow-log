@@ -13,11 +13,11 @@
         "zendframework/zend-mvc":               "~2.2",
         "zendframework/zend-http":              "~2.2",
         "zendframework/zend-log":               "~2.2",
-        "zendframework/zend-modulemanager":     "~2.2"
+        "zendframework/zend-modulemanager":     "~2.2",
+        "psr/log":                              "~1.0"
 
     },
     "require-dev": {
-        "psr/log":                              "~1.0"
     },
     "autoload": {
         "psr-0": {
