@@ -1,0 +1,29 @@
+{
+    "name": "enlitepro/enlite-slow-log",
+    "description": "Log slow pages in Zend Framework 2",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Evgeny Shpilevsky",
+            "email": "evgeny@shpilevsky.com"
+        }
+    ],
+    "require": {
+        "zendframework/zend-mvc":               "~2.2",
+        "zendframework/zend-http":              "~2.2",
+        "zendframework/zend-log":               "~2.2",
+        "zendframework/zend-modulemanager":     "~2.2"
+
+    },
+    "require-dev": {
+        "psr/log":                              "~1.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "EnliteSlowLog": "src"
+        }
+    },
+    "suggest": {
+        "enlitepro/enlite-monolog": "Monolog integration to Zend Framework 2"
+    }
+}

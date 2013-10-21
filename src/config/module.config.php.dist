@@ -1,0 +1,10 @@
+<?php
+
+return array(
+    'EnliteSlowLog' => array(
+        // accept monolog logger
+        'logger' => 'EnliteMonologService',
+        // in milliseconds
+        'threshold' => 0
+    )
+);
