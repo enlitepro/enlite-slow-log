@@ -36,3 +36,57 @@ return array(
     )
 );
 ```
+
+Configure with Zend\Log
+-----------------------
+
+```php
+// prepare log
+'log' => array(
+    'MySlowLog' => array(
+        'writers' => array(
+            array(
+                'name' => 'Zend\Log\Writer\Stream',
+                'options' => array(
+                    "stream" => "data/slow.log"
+                )
+            )
+        )
+    )
+)
+//
+'EnliteSlowLog' => array(
+    'logger' => 'MySlowLog',
+    'threshold' => 1000
+),
+```
+
+Log will be write to `data/slow.log`
+
+Configure with EnliteMonolog
+----------------------------
+
+Install [EnliteMonolog](https://github.com/enlitepro/enlite-monolog)
+
+```php
+'EnliteMonolog' => array(
+    'MySlowLog' => array(
+        'name' => 'SlowLog', // will be output to log
+        'handlers' => array(
+            'default' => array(
+                'name' => 'Monolog\Handler\StreamHandler',
+                'args' => array(
+                    'path' => 'data/slow.log'
+                )
+            )
+        )
+    )
+),
+
+'EnliteSlowLog' => array(
+    'logger' => 'MySlowLog',
+    'threshold' => 1000
+)
+```
+
+Log will be write to `data/slow.log`
