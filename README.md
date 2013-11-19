@@ -61,7 +61,7 @@ Configure with Zend\Log
 ),
 ```
 
-Log will be write to `data/slow.log`
+Log will be written to `data/slow.log`
 
 Configure with EnliteMonolog
 ----------------------------
@@ -89,4 +89,4 @@ Install [EnliteMonolog](https://github.com/enlitepro/enlite-monolog)
 )
 ```
 
-Log will be write to `data/slow.log`
+Log will be written to `data/slow.log`
