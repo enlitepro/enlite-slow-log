@@ -41,7 +41,8 @@ Configure with Zend\Log
 -----------------------
 
 ```php
-// prepare log
+// prepare logger via Zend\Log\LoggerAbstractServiceFactory
+// in config/autoload/log.global.php
 'log' => array(
     'MySlowLog' => array(
         'writers' => array(
@@ -53,8 +54,9 @@ Configure with Zend\Log
             )
         )
     )
-)
-//
+),
+
+// in config/autoload/enlite-slow-log.global.php
 'EnliteSlowLog' => array(
     'logger' => 'MySlowLog',
     'threshold' => 1000
@@ -69,6 +71,7 @@ Configure with EnliteMonolog
 Install [EnliteMonolog](https://github.com/enlitepro/enlite-monolog)
 
 ```php
+// in config/autoload/enlite-monolog.global.php
 'EnliteMonolog' => array(
     'MySlowLog' => array(
         'name' => 'SlowLog', // will be output to log
@@ -82,6 +85,37 @@ Install [EnliteMonolog](https://github.com/enlitepro/enlite-monolog)
         )
     )
 ),
+
+// in config/autoload/enlite-slow-log.global.php
+'EnliteSlowLog' => array(
+    'logger' => 'MySlowLog',
+    'threshold' => 1000
+)
+```
+
+Configure custom logger
+-----------------------
+
+
+```php
+
+// in Module.php
+public function getServiceConfig()
+{
+    return array(
+        'factories' => array(
+            'MySlowLogger' => function(){
+                $logger = new \Zend\Log\Logger();
+                $writer = new \Zend\Log\Writer\Stream("data/slow.log");
+                $logger->addWriter($writer);
+
+                return $writer;
+            }
+        )
+    );
+}
+
+// in enlite-slow-log.global.php
 
 'EnliteSlowLog' => array(
     'logger' => 'MySlowLog',
