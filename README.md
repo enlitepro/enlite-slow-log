@@ -11,7 +11,7 @@ The recommended way to install is through composer.
 ```json
 {
     "require": {
-        "enlitepro/enlite-slow-log": "1.0.*"
+        "enlitepro/enlite-slow-log": "~1.0.0"
     }
 }
 ```
@@ -118,7 +118,7 @@ public function getServiceConfig()
 // in enlite-slow-log.global.php
 
 'EnliteSlowLog' => array(
-    'logger' => 'MySlowLog',
+    'logger' => 'MySlowLogger',
     'threshold' => 1000
 )
 ```
